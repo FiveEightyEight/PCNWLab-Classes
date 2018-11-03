@@ -29,7 +29,28 @@ const external_playlist = require('./playlist');
                           Eg. "3 min 22 seconds"
 */
 
+class Song {
+    constructor(name, artist = [], length){
+        this.name = name;
+        this.artist = artist;
+        this.length = length;
+    }
 
+    getArtist(){
+        return this.artist[0];
+    }
+
+    getFeatures(){
+        return this.artist.slice(1);
+    }
+
+    getDuration(){
+        if(this.length < 61){
+            return `${this.length} seconds`
+        } 
+        return `${Math.floor(this.length / 60)} min ${this.length % 60} seconds`
+    }
+}
 
 /*  2
     Define a @class called Playlist
@@ -53,7 +74,43 @@ const external_playlist = require('./playlist');
                                  Eg. { name: "Drake", occurence: 4 }
 */
 
+class Playlist {
+    constructor(name, songs = {} ){
+        this.name = name;
+        this.songs = songs;
+    }
 
+    addSong(name, artists, length){
+        // Adds a Song object to the list of songs
+        this.songs[name] =  new Song = (name, artists, length);
+    }
+
+    removeSong(){
+        //  Removes the song with the name passed into the parameter
+
+    }
+
+    getNumberOfSongs(){
+         // Returns the number of songs in the playlist
+    }
+
+    getNamesOfSongs(){
+        // Returns an Array with only the Name of the songs as strings.
+    }
+
+    getTotalLength(){
+        // Returns the total length of the playlist in seconds
+    }
+
+    getTotalDuration(){
+                                 /* Returns an Object literal with the name of the most reoccurring Artist in
+                                 the playlist and number of occurences. Includes featured artists and main artists. 
+                                 If there is a tie between artists, just return any one of the tied Artists.
+                                 Eg. { name: "Drake", occurence: 4 }
+                                 */
+    }
+
+}
 
 
 /* 3
